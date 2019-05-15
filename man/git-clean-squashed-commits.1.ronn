@@ -1,0 +1,23 @@
+git-remove-squashed-commits(1) -- A bash helper to remove squashed commits. Useful when you start new feature branch not from master but from another branch.
+========================================
+
+SYNOPSIS
+--------
+
+git-remove-squashed-commits [...]
+
+`...` -  are the commands that passed to `git commit`
+
+DESCRIPTION
+-----------
+
+When your project uses a merge method `Squash and merge` for Pull Requests, your commits will be squashed into a single one commit. That's cool but it may take a while before your PR is merged. While that, you may want to create another branch, using your not-yet-merged branch (instead of master). So you end up that these commits come to your new branch and it would be cool if you are able to remove them once your previous PR is merged. This git helper solves the problem - so you have a cleaner PR without these commits from another PR.
+
+This command removes the commits that were being squashed.
+
+COPYRIGHT
+---------
+
+(c) 2019 Jerry Green
+
+Bats is released under the terms of an MIT-style license.

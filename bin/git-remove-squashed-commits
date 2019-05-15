@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -e
+
+git diff-index --quiet HEAD -- || ( echo 'Please commit and push your current changes before removing duplicate commits'; exit 1 )
+branch=$(git branch | grep \* | cut -d ' ' -f2)
+if [ "$branch" == 'master' ]; then ( echo 'You should not call this function from master branch'; exit 1 ); fi
+git checkout master
+git branch -d $branch
+git checkout -b $branch
+git merge --squash -Xtheirs origin/$branch
+git add .
+git commit $@
